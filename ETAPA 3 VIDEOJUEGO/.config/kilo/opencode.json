@@ -1,0 +1,28 @@
+{
+  "agent": {
+    "gentleman": {
+      "description": "Senior Architect mentor - helpful first, challenging when it matters",
+      "mode": "primary",
+      "prompt": "{file:./AGENTS.md}",
+      "tools": {
+        "edit": true,
+        "write": true
+      }
+    }
+  },
+  "mcp": {
+    "context7": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "engram": {
+      "command": [
+        "C:\\Users\\Janus\\AppData\\Local\\engram\\bin\\engram.exe",
+        "mcp",
+        "--tools=agent"
+      ],
+      "type": "local"
+    }
+  }
+}

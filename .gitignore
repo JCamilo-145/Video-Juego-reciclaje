@@ -1,22 +1,44 @@
-# Unity generated folders
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-[Ll]ogs/
-[Uu]serSettings/
-[Mm]emoryCaptures/
+# ==============================================================================
+# ARCHIVOS Y CARPETAS TEMPORALES DE UNITY
+# ==============================================================================
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
 
-# Never ignore Asset meta files
-!/[Aa]ssets/**/*.meta
+# ==============================================================================
+# CACHÉ, REPORTES DE FALLOS Y MEMORIA
+# ==============================================================================
+*.log
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+sysinfo.txt
+mono_crash.*
 
-# Visual Studio / Rider generated
+# ==============================================================================
+# COMPILACIONES Y PAQUETES PESADOS (+100MB)
+# ==============================================================================
+*.apk
+*.aab
+*.app
+*.unitypackage
+*.unitypackage.meta
+
+# ==============================================================================
+# ARCHIVOS AUTOGENERADOS POR IDES (Visual Studio, Rider, VS Code)
+# ==============================================================================
 .vs/
-.idea/
+.gradle/
+ExportedObj/
+.consulo/
 *.csproj
+*.unityproj
 *.sln
-*.slnx
+*.suo
+*.tmp
 *.user
 *.userprefs
 *.pidb
@@ -27,16 +49,16 @@
 *.opendb
 *.VC.db
 
-# OS files
-.DS_Store
-Thumbs.db
+# ==============================================================================
+# ARCHIVOS META DE CACHÉ GENERADOS POR UNITY
+# ==============================================================================
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+/[Aa]ssets/[Ss]ceneDependencyCache*
 
-# Crashlytics generated file
-crashlytics-build.properties
-
-# Addressables
-/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
-/[Aa]ssets/StreamingAssets/aa.meta
-/[Aa]ssets/StreamingAssets/aa/*
-# Local AI runtime state
-.atl/
+# ==============================================================================
+# SCRIPTS VISUALES Y UI TOOLKIT
+# ==============================================================================
+/UIElementsSchema/
+/[Aa]ssets/Unity.VisualScripting.Generated/
