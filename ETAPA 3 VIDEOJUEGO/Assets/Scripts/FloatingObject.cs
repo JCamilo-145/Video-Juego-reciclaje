@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FloatingObject : MonoBehaviour
 {
-    [Header("Ajustes de Animación")]
+    [Header("Animation Settings")]
     [SerializeField] private float speed = 1f;
     [SerializeField] private float amplitude = 0.1f;
     [SerializeField] private float rotationSpeed = 20f;
@@ -12,7 +12,7 @@ public class FloatingObject : MonoBehaviour
 
     private void Start()
     {
-        // Guardamos la posición inicial como referencia
+        // Store the initial position as the reference point
         startPos = transform.position;
     }
 
@@ -20,17 +20,17 @@ public class FloatingObject : MonoBehaviour
     {
         if (isFloating)
         {
-            // Movimiento oscilatorio vertical
+            // Vertical oscillating movement
             float newY = startPos.y + Mathf.Sin(Time.time * speed) * amplitude;
             transform.position = new Vector3(startPos.x, newY, startPos.z);
 
-            // Rotación continua en el eje Y
+            // Continuous rotation around the Y axis
             transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
         }
     }
 
     /// <summary>
-    /// Desactiva la flotación (útil al iniciar arrastre, agarrar o hacer clic).
+    /// Disables floating (useful when starting a drag, grab or click).
     /// </summary>
     public void DisableFloating()
     {
@@ -38,7 +38,7 @@ public class FloatingObject : MonoBehaviour
     }
 
     /// <summary>
-    /// Reactiva la flotación actualizando el punto de ancla a la posición actual.
+    /// Re-enables floating by updating the anchor point to the current position.
     /// </summary>
     public void EnableFloating()
     {

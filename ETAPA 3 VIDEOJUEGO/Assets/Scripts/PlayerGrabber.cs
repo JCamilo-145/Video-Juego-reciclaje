@@ -3,28 +3,28 @@ using UnityEngine.InputSystem;
 
 public class PlayerGrabber : MonoBehaviour
 {
-    [Header("Configuración de Agarre")]
-    [Tooltip("El objeto vacío (Empty) frente al jugador donde se colocará la basura")]
+    [Header("Grab Settings")]
+    [Tooltip("Empty object in front of the player where the trash will be placed")]
     public Transform holdPoint;
 
     private GameObject currentTarget;
     private GameObject heldObject;
 
-    // El Player Input (Send Messages) llama a este método automáticamente
-    // cuando presionas la acción "Action" (la tecla C).
+    // Player Input (Send Messages) calls this method automatically
+    // when the "Action" input is pressed (the C key).
     public void OnAction(InputValue value)
     {
         if (value.isPressed)
         {
-            Debug.Log("1. Tecla de Acción (C) presionada.");
-            
+            Debug.Log("1. Action key (C) pressed.");
+
             if (heldObject == null && currentTarget != null)
             {
                 GrabObject(currentTarget);
             }
             else if (currentTarget == null)
             {
-                Debug.Log("2. No hay ninguna basura en el área del círculo verde.");
+                Debug.Log("2. There is no trash inside the green circle area.");
             }
         }
     }
@@ -34,7 +34,7 @@ public class PlayerGrabber : MonoBehaviour
         if (IsTrashTag(other.tag) && heldObject == null)
         {
             currentTarget = other.gameObject;
-            Debug.Log("-> Basura detectada en el rango: " + other.gameObject.name);
+            Debug.Log("-> Trash detected in range: " + other.gameObject.name);
         }
     }
 
@@ -43,14 +43,14 @@ public class PlayerGrabber : MonoBehaviour
         if (currentTarget == other.gameObject)
         {
             currentTarget = null;
-            Debug.Log("<- Te alejaste de la basura.");
+            Debug.Log("<- You moved away from the trash.");
         }
     }
 
     private bool IsTrashTag(string tagToCheck)
     {
-        return tagToCheck == "Trash_Organic" || 
-               tagToCheck == "Trash_NonRecyclable" || 
+        return tagToCheck == "Trash_Organic" ||
+               tagToCheck == "Trash_NonRecyclable" ||
                tagToCheck == "Trash_Recyclable";
     }
 
@@ -59,18 +59,18 @@ public class PlayerGrabber : MonoBehaviour
         heldObject = obj;
         currentTarget = null;
 
-        // Emparenta la basura al HoldPoint
+        // Parent the trash to the HoldPoint
         heldObject.transform.SetParent(holdPoint);
         heldObject.transform.localPosition = Vector3.zero;
         heldObject.transform.localRotation = Quaternion.identity;
 
-        // Si tiene física, la apagamos para que no se caiga
+        // If it has physics, turn them off so the object does not fall
         Rigidbody rb = heldObject.GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.isKinematic = true;
         }
-        
-        Debug.Log("¡Basura agarrada con éxito!");
+
+        Debug.Log("Trash grabbed successfully!");
     }
 }
